@@ -1,12 +1,9 @@
-import {Outlet} from 'react-router-dom';
 
-import VideoDirectory from '../../components/video-directory/video-directory.component';
 
 const Home = () => {
     return (
         <div>
-            <VideoDirectory/>
-            <Outlet/>
+            <h1>I AM A HOMEPAGE AND WILL BE SOMETHING</h1>
         </div>
     );
 };

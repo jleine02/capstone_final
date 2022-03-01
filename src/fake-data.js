@@ -1,4 +1,3 @@
-
 const fakeVideos = [
     {
         id: 1,
@@ -26,14 +25,4 @@ const fakeVideos = [
     },
 ]
 
-const VideoDirectory = () => {
-    return (
-        <div>
-            {fakeVideos.map((fakeVideo) => (
-                <h1>Video ID :{fakeVideo.id} CreatedDate: {fakeVideo.createdDate}</h1>
-            ))}
-        </div>
-    );
-};
-
-export default VideoDirectory;
+export default fakeVideos;
