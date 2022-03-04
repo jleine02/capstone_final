@@ -12,6 +12,7 @@ const Navigation = () => {
             <NavigationContainer>
                 <NavLink to='/'>HOME</NavLink>
                 <NavLink to='/videos'>VIDEOS</NavLink>
+                <NavLink to='/upload'>UPLOAD</NavLink>
                 <NavLink to='/'>SIGN IN</NavLink>
                 <NavLink to='/'>SIGN OUT</NavLink>
             </NavigationContainer>
