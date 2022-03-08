@@ -3,7 +3,7 @@ import FormInput from "../form-input/form-input.component";
 import {ButtonsContainer} from "../sign-in-form/sign-in-form.styles";
 import Button from "../button/button.component";
 
-const MAX_FILE_SIZE_BYTES = 500000;
+// const MAX_FILE_SIZE_BYTES = 500000;
 
 const defaultFormFields = {
     file: ''

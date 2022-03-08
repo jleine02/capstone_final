@@ -7,6 +7,7 @@ const Videos = () => {
         <Routes>
             <Route index element={<VideosPreview/>}/>
             <Route path=':video' element={<Video/>}/>
+            <Route path='test' element={<Video/>}/>
         </Routes>
     );
 };

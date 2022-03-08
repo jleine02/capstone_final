@@ -5,7 +5,7 @@ import VideoCard from "../../components/video-card/video-card.component";
 
 const VideosPreview = () => {
     const videos = fakeVideos;
-    console.log(videos);
+    console.log("hit");
     return (
         <Fragment>
             {videos.map((video) => {

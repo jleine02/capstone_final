@@ -1,16 +1,17 @@
-import {Fragment} from 'react';
+import React, {Fragment} from 'react';
 
-import VideoCard from "../../components/video-card/video-card.component";
+import VideoPlayer from "../../components/video-player/video-player.component";
 import {VideoContainer} from "./video.styles";
 
 const Video = () => {
+    console.log("hit");
     return (
         <Fragment>
             <VideoContainer>
-                <h1>I WILL BE A VIDEO!</h1>
+                <VideoPlayer />
             </VideoContainer>
         </Fragment>
-    )
+    );
 }
 
 export default Video;

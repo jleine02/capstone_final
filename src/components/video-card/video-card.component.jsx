@@ -11,7 +11,8 @@ import {
 
 const VideoCard = ({video}) => {
     const {id, createdDate} = video;
-    console.log(id, createdDate);
+    console.log("hit");
+    // console.log(id, createdDate);
 
     return (
         <VideoCardContainer>
