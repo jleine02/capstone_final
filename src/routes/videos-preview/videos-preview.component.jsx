@@ -1,12 +1,12 @@
 import {Fragment, useEffect, useState} from 'react';
 
-import fakeVideos from '../../fake-data';
 import VideoCard from "../../components/video-card/video-card.component";
 
 const VideosPreview = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [videos, setVideos] = useState([]);
     const axios = require("axios").default;
+    const cloudFrontUrl = "https://d34ipgiljz8rfk.cloudfront.net";
 
     useEffect(() => {
         loadVideos();

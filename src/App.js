@@ -9,19 +9,15 @@ import Video from "./routes/video/video.component";
 
 import Amplify, { Auth } from 'aws-amplify';
 import awsconfig from './aws-exports';
-import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 
-import awsExports from './aws-exports';
-
 Amplify.configure(awsconfig);
-Amplify.configure(awsExports);
 
 const App = () => {
     return (
         <Routes>
             <Route path='/' element={<Navigation/>}>
-                <Route index element={<Home/>}/>
+                <Route index element={<Videos/>}/>
                 <Route path='videos/*' element={<Videos/>}/>
                 <Route path='video' element={<Video/>}/>
                 <Route path='upload' element={<Upload/>}/>

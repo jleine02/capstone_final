@@ -1,9 +1,10 @@
+import VideosPreview from "../videos-preview/videos-preview.component";
 
 
 const Home = () => {
     return (
         <div>
-            <h1>I AM A HOMEPAGE AND WILL BE SOMETHING</h1>
+            <VideosPreview/>
         </div>
     );
 };

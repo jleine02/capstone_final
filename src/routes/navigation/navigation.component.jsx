@@ -1,5 +1,5 @@
 import {Fragment} from 'react';
-import {NavLink, Outlet} from 'react-router-dom';
+import {Link, NavLink, Outlet} from 'react-router-dom';
 
 import {
     NavigationContainer,
@@ -11,16 +11,14 @@ import '@aws-amplify/ui-react/styles.css';
 import awsExports from '../../aws-exports';
 Amplify.configure(awsExports);
 
-
 const Navigation = ({signOut}) => {
 
     return (
         <Fragment>
             <NavigationContainer>
-                <NavLink to='/'>HOME</NavLink>
-                <NavLink to='/videos'>VIDEOS</NavLink>
+                <NavLink to='/videos'>HOME</NavLink>
                 <NavLink to='/upload'>UPLOAD</NavLink>
-                <NavLink onClick={signOut}>SIGN OUT</NavLink>
+                <Link to={signOut}>SIGN OUT</Link>
             </NavigationContainer>
             <Outlet/>
         </Fragment>
