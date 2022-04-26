@@ -6,6 +6,10 @@ import App from './App';
 
 import './index.scss';
 
+import { Amplify } from 'aws-amplify';
+import awsExports from './aws-exports';
+Amplify.configure(awsExports);
+
 const rootElement = document.getElementById('root');
 
 render(

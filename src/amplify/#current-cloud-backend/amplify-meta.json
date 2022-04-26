@@ -1,0 +1,58 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-finalcapstone-dev-122202-authRole",
+      "UnauthRoleArn": "arn:aws:iam::370205261844:role/amplify-finalcapstone-dev-122202-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::370205261844:role/amplify-finalcapstone-dev-122202-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-finalcapstone-dev-122202-deployment",
+      "UnauthRoleName": "amplify-finalcapstone-dev-122202-unauthRole",
+      "StackName": "amplify-finalcapstone-dev-122202",
+      "StackId": "arn:aws:cloudformation:us-west-2:370205261844:stack/amplify-finalcapstone-dev-122202/0f961280-c57d-11ec-8f54-0614ac109365",
+      "AmplifyAppId": "d1mv94mh5303tp"
+    }
+  },
+  "auth": {
+    "finalcapstone6cc9d37d": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-finalcapstone-dev-122202-deployment/amplify-cfn-templates/auth/finalcapstone6cc9d37d-cloudformation-template.json",
+        "logicalId": "authfinalcapstone6cc9d37d"
+      },
+      "lastPushTimeStamp": "2022-04-26T16:48:06.298Z",
+      "output": {
+        "UserPoolId": "us-west-2_DqhcorsUx",
+        "AppClientIDWeb": "5hdkap6c96adsjm7v7fndnqmna",
+        "AppClientID": "1kdtk2j5pp0q4o3ijcnbse1mgp",
+        "IdentityPoolId": "us-west-2:7b395035-dad2-480e-a21b-dc782ddad514",
+        "UserPoolArn": "arn:aws:cognito-idp:us-west-2:370205261844:userpool/us-west-2_DqhcorsUx",
+        "IdentityPoolName": "finalcapstone6cc9d37d_identitypool_6cc9d37d__dev",
+        "UserPoolName": "finalcapstone6cc9d37d_userpool_6cc9d37d"
+      },
+      "lastPushDirHash": "KqBvLbTAuUabe+UHxmDnxEy6XIU="
+    }
+  }
+}
