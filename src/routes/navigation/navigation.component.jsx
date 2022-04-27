@@ -5,8 +5,8 @@ import {
     NavigationContainer,
 } from './navigation.styles';
 
-import { Amplify } from 'aws-amplify';
-import { withAuthenticator } from '@aws-amplify/ui-react';
+import {Amplify} from 'aws-amplify';
+import {Button, withAuthenticator} from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import awsExports from '../../aws-exports';
 Amplify.configure(awsExports);
@@ -16,9 +16,9 @@ const Navigation = ({signOut}) => {
     return (
         <Fragment>
             <NavigationContainer>
-                <NavLink to='/videos'>HOME</NavLink>
+                <NavLink to='/videos'>VIDEOS</NavLink>
                 <NavLink to='/upload'>UPLOAD</NavLink>
-                <NavLink to={signOut}>SIGN OUT</NavLink>
+                <Button onClick={signOut}>SIGN OUT</Button>
             </NavigationContainer>
             <Outlet/>
         </Fragment>
