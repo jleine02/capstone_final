@@ -46,6 +46,7 @@ const FileUpload = () => {
             const result = await fetch(response.data.uploadURL, {
                 method: "POST",
                 body: f["file"],
+
             });
             console.log('result: ', result);
             resetFormFields();
