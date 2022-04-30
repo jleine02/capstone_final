@@ -16,9 +16,9 @@ const Navigation = ({signOut}) => {
     return (
         <Fragment>
             <NavigationContainer>
-                <NavLink to='/videos'>VIDEOS</NavLink>
-                <NavLink to='/upload'>UPLOAD</NavLink>
-                <Button onClick={signOut}>SIGN OUT</Button>
+                <NavLink to='/videos'><b>VIDEOS</b></NavLink>
+                <NavLink to='/upload'><b>UPLOAD</b></NavLink>
+                <Button onClick={signOut}><b>SIGN OUT</b></Button>
             </NavigationContainer>
             <Outlet/>
         </Fragment>

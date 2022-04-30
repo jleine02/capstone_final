@@ -6,16 +6,15 @@ import FormInput from "../form-input/form-input.component";
 const defaultFormFields = {
     title: '',
     date: '',
-    duration: 0,
-    video: null,
+    duration: '',
 }
 
 const FileUpload = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
-    const {title, date, duration, video} = formFields;
+    const {title, date, duration} = formFields;
     const axios = require("axios").default;
 
-    const API_ENDPOINT = "https://f2ud39ek4d.execute-api.us-west-2.amazonaws.com/default/getPresignedUrl" // needs to be set as env variable
+    const API_ENDPOINT = "https://f2ud39ek4d.execute-api.us-west-2.amazonaws.com/default/getPresignedUrl";
 
     const resetFormFields = () => {
         setFormFields(defaultFormFields);
@@ -28,6 +27,7 @@ const FileUpload = () => {
 
     const getUploadParams = ({meta}) => {
         console.log('need to set these as part of the file object');
+        return {url: API_ENDPOINT};
     }
 
     const handleLocalUploadChangeStatus = ({meta, file}, status) => {
@@ -41,14 +41,16 @@ const FileUpload = () => {
                 method: "GET",
                 url: API_ENDPOINT,
             });
-
+            console.log("response: ", response)
+            console.log(response.data.uploadURL)
             const result = await fetch(response.data.uploadURL, {
-                method: "PUT",
+                method: "POST",
                 body: f["file"],
             });
+            console.log('result: ', result);
             resetFormFields();
         } catch (error) {
-            console.log('Error occurred try again');
+            console.log('Error occurred try again: ', error.text);
         }
     }
 
@@ -77,7 +79,6 @@ const FileUpload = () => {
                 onChange={handleFormChange}
                 name='duration'
                 value={duration}
-                hidden={'hidden'}
             />
             <Dropzone
                 getUploadParams={getUploadParams}

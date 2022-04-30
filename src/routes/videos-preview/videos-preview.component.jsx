@@ -5,14 +5,11 @@ import VideoCard from "../../components/video-card/video-card.component";
 import {authGet} from '../../utils/aws/aws.utils';
 
 const VideosPreview = () => {
-    // const [isLoading, setIsLoading] = useState(true);
     const [videos, setVideos] = useState([]);
     const cloudFrontUrl = "https://d34ipgiljz8rfk.cloudfront.net"; // WILL BE SET AS ENV VARIABLE
 
     useEffect(() => {
-        // setIsLoading(true);
         loadVideos();
-        // setIsLoading(false);
     }, []);
 
     const loadVideos = async () => {
