@@ -6,7 +6,9 @@ import {authGet} from '../../utils/aws/aws.utils';
 
 const VideosPreview = () => {
     const [videos, setVideos] = useState([]);
-    const cloudFrontUrl = "https://d34ipgiljz8rfk.cloudfront.net"; // WILL BE SET AS ENV VARIABLE
+    const localVideos = 'videos/'
+
+    // const cloudFrontUrl = "https://d34ipgiljz8rfk.cloudfront.net"; // WILL BE SET AS ENV VARIABLE
 
     useEffect(() => {
         loadVideos();
@@ -15,11 +17,11 @@ const VideosPreview = () => {
     const loadVideos = async () => {
         try {
             console.log('requesting videos from cloudfront');
-            const response = await authGet(cloudFrontUrl)
-
-            if (response && response.videos) {
-                setVideos(response.videos);
-            }
+            // const response = await authGet(cloudFrontUrl)
+            //
+            // if (response && response.videos) {
+            //     setVideos(response.videos);
+            // }
 
         } catch (error) {
             console.log("Error occurred while fetching videos from cloudfront!");

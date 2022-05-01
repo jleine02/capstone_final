@@ -1,7 +1,21 @@
 import React, {useState} from 'react';
 import "react-dropzone-uploader/dist/styles.css";
-import Dropzone from "react-dropzone-uploader";
 import FormInput from "../form-input/form-input.component";
+
+
+const S3_BUCKET ='video-injest-bucket';
+const REGION ='us-west-2';
+
+
+// AWS.config.update({
+//     accessKeyId: 'YOUR_ACCESS_KEY_HERE',
+//     secretAccessKey: 'YOUR_SECRET_ACCESS_KEY_HERE'
+// })
+//
+// const myBucket = new AWS.S3({
+//     params: { Bucket: S3_BUCKET},
+//     region: REGION,
+// })
 
 const defaultFormFields = {
     title: '',
@@ -12,9 +26,9 @@ const defaultFormFields = {
 const FileUpload = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const {title, date, duration} = formFields;
-    const axios = require("axios").default;
-
-    const API_ENDPOINT = "https://f2ud39ek4d.execute-api.us-west-2.amazonaws.com/default/getPresignedUrl";
+    // const axios = require("axios").default;
+    //
+    // const API_ENDPOINT = "https://f2ud39ek4d.execute-api.us-west-2.amazonaws.com/default/getPresignedUrl";
 
     const resetFormFields = () => {
         setFormFields(defaultFormFields);
@@ -25,30 +39,24 @@ const FileUpload = () => {
         setFormFields({...formFields, [name]: value});
     };
 
-    const getUploadParams = ({meta}) => {
-        console.log('need to set these as part of the file object');
-        return {url: API_ENDPOINT};
-    }
-
-    const handleLocalUploadChangeStatus = ({meta, file}, status) => {
-        console.log(status, meta, file)
-    }
-
     const handleSubmit = async (files) => {
         const f = files[0];
         try {
-            const response = await axios({
-                method: "GET",
-                url: API_ENDPOINT,
-            });
-            console.log("response: ", response)
-            console.log(response.data.uploadURL)
-            const result = await fetch(response.data.uploadURL, {
-                method: "POST",
-                body: f["file"],
-
-            });
-            console.log('result: ', result);
+            // const response = await axios({
+            //     method: "GET",
+            //     url: API_ENDPOINT,
+            //     headers: {
+            //         "Access-Control-Allow-Origin": "*"
+            //     }
+            // });
+            // console.log("response: ", response)
+            //
+            // const result = await fetch(response.data.uploadURL, {
+            //     method: "POST",
+            //     body: f["file"],
+            //
+            // });
+            // console.log('result: ', result);
             resetFormFields();
         } catch (error) {
             console.log('Error occurred try again: ', error.text);
@@ -75,25 +83,13 @@ const FileUpload = () => {
             />
             <FormInput
                 // label='Duration'
-                type='time'
+                type='file'
                 required
                 onChange={handleFormChange}
                 name='duration'
                 value={duration}
             />
-            <Dropzone
-                getUploadParams={getUploadParams}
-                onChangeStatus={handleLocalUploadChangeStatus}
-                onSubmit={handleSubmit}
-                maxFiles={1}
-                multiple={false}
-                canCancel={false}
-                inputContent="Drag and drop your files here"
-                styles={{
-                    dropzone: {width: window.innerWidth*.8, height: 200},
-                    dropzoneActive: {borderColor: "green"},
-                }}
-            />
+            <button onClick={handleSubmit}>UPLOAD VIDEO</button>
         </form>
     );
 };

@@ -1,10 +1,12 @@
-import { useState } from 'react';
-import {useNavigate} from "react-router-dom";
+import {useState} from 'react';
+
+import {
+    signInAuthUserWithEmailAndPassword,
+} from '../../utils/firebase/firebase.utils';
 
 import FormInput from '../form-input/form-input.component';
-import Button from '../button/button.component';
-
-import { SignInContainer, ButtonsContainer } from './sign-in-form.styles';
+import SignUpForm from "../sign-up-form/sign-up-form.component";
+import {StyledAuth} from "./sign-in-form.styles";
 
 const defaultFormFields = {
     email: '',
@@ -13,9 +15,7 @@ const defaultFormFields = {
 
 const SignInForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
-    const { email, password } = formFields;
-
-    const navigate = useNavigate();
+    const {email, password} = formFields;
 
     const resetFormFields = () => {
         setFormFields(defaultFormFields);
@@ -23,27 +23,24 @@ const SignInForm = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
         try {
-            // this will handle submit when cognito is hooked up
-            console.log("redirecting...");
+            await signInAuthUserWithEmailAndPassword(email, password);
             resetFormFields();
-            navigate('/home')
         } catch (error) {
             console.log('user sign in failed', error);
         }
     };
 
     const handleChange = (event) => {
-        const { name, value } = event.target;
+        const {name, value} = event.target;
 
-        setFormFields({ ...formFields, [name]: value });
+        setFormFields({...formFields, [name]: value});
     };
 
     return (
-        <SignInContainer>
+        <StyledAuth>
             <h2>Already have an account?</h2>
-            <span>Sign in with your email and password</span>
+            <span>Login to your account</span>
             <form onSubmit={handleSubmit}>
                 <FormInput
                     label='Email'
@@ -53,7 +50,6 @@ const SignInForm = () => {
                     name='email'
                     value={email}
                 />
-
                 <FormInput
                     label='Password'
                     type='password'
@@ -62,11 +58,9 @@ const SignInForm = () => {
                     name='password'
                     value={password}
                 />
-                <ButtonsContainer>
-                    <Button type='submit'>Sign In</Button>
-                </ButtonsContainer>
+                <button>Login</button>
             </form>
-        </SignInContainer>
+        </StyledAuth>
     );
 };
 

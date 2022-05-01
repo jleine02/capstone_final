@@ -6,4 +6,5 @@ export const NavigationContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
+  text-underline-color: white;
 `;

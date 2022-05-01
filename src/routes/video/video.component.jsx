@@ -7,9 +7,12 @@ const Video = () => {
     console.log("hit");
     return (
         <Fragment>
-            <VideoContainer>
+            <div>
                 <VideoPlayer />
-            </VideoContainer>
+            </div>
+            <div>
+                <h1>I WILL BE A PLACE TO ADD ANNOTATIONS</h1>
+            </div>
         </Fragment>
     );
 }
