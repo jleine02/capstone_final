@@ -5,7 +5,6 @@ import {
 } from '../../utils/firebase/firebase.utils';
 
 import FormInput from '../form-input/form-input.component';
-import SignUpForm from "../sign-up-form/sign-up-form.component";
 import {StyledAuth} from "./sign-in-form.styles";
 
 const defaultFormFields = {
@@ -24,7 +23,8 @@ const SignInForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            await signInAuthUserWithEmailAndPassword(email, password);
+            const loginResponse = await signInAuthUserWithEmailAndPassword(email, password);
+            console.log("loginResponse: ", loginResponse);
             resetFormFields();
         } catch (error) {
             console.log('user sign in failed', error);
