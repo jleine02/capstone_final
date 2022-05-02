@@ -1,26 +1,20 @@
 import React, {useEffect} from 'react';
-import {
-    BrowserRouter,
-    Route,
-    Routes,
-} from "react-router-dom";
 import {useDispatch, useSelector} from 'react-redux';
-
-import Home from "./routes/home/home.component";
 
 import {ThemeProvider} from "styled-components";
 import {darkTheme} from "./theme";
+import GlobalStyle from "./styles/global-style";
 
-import GlobalStyle from "./styles/GlobalStyle";
 import Router from "./Router";
 import Authentication from "./routes/authentication/authentication.component";
 
 import {setCurrentUser} from "./store/user/user.action";
+import {selectCurrentUser} from "./store/user/user.selector";
+
 import {
     createUserDocumentFromAuth,
     onAuthStateChangedListener,
 } from "./utils/firebase/firebase.utils";
-import {selectCurrentUser} from "./store/user/user.selector";
 
 
 const App = () => {

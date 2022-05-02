@@ -21,7 +21,7 @@ const AppRouter = () => (
         <SideBar />
         <Container>
             <Routes>
-                <Route path="/" component={Home} />
+                <Route path="/" element={<Home/>} />
             </Routes>
         </Container>
     </Router>

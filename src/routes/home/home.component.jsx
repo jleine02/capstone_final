@@ -1,20 +1,43 @@
-import React, { useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import VideoGrid from "../../styles/video-grid";
 
+
+
+
 import {HomeContainer} from "./home.styles";
 
-import {localVideos} from "../../localVideos";
-
 const Home = () => {
-    const {videos} = localVideos;
-    console.log(videos);
+    const [videos, setVideos] = useState([]);
 
-    // useEffect(() => {
-    //     // dispatch(getVideos()); // this will fetch from s3
-    // }, [dispatch]);
+    useEffect(() => {
+        console.log(videos);
+        loadVideos();
+        console.log(videos);
+    }, []);
+
+    const loadVideos = async () => {
+        console.log("attempting to retrieve videos from cloudfront");
+        const cloudFrontUrl = "/";
+
+        try {
+            const request = {
+                method: "GET"
+                }
+
+
+            const response = await fetch(cloudFrontUrl, request);
+            console.log("response:", response);
+            const jsonResponse = await response.json();
+            console.log("jsonResponse:", jsonResponse);
+
+            setVideos(jsonResponse.videos);
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
 
     return (

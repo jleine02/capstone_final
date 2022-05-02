@@ -7,7 +7,6 @@ import App from './App';
 import {persistor, store} from "./store/store";
 
 import './index.scss';
-import {BrowserRouter} from "react-router-dom";
 
 const rootElement = document.getElementById('root');
 
