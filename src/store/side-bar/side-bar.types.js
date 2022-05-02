@@ -1,0 +1,3 @@
+export const SIDEBAR_ACTION_TYPES = {
+    SET_IS_SIDEBAR_OPEN: 'side-bar/SET_IS_SIDEBAR_OPEN',
+};

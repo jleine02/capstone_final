@@ -23,8 +23,7 @@ const SignInForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const loginResponse = await signInAuthUserWithEmailAndPassword(email, password);
-            console.log("loginResponse: ", loginResponse);
+            await signInAuthUserWithEmailAndPassword(email, password);
             resetFormFields();
         } catch (error) {
             console.log('user sign in failed', error);
@@ -33,7 +32,6 @@ const SignInForm = () => {
 
     const handleChange = (event) => {
         const {name, value} = event.target;
-
         setFormFields({...formFields, [name]: value});
     };
 
