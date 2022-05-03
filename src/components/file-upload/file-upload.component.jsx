@@ -33,7 +33,7 @@ const FileUpload = () => {
         formData.append('upload_preset', 'test_upload');
         console.log("here goes nothin lets upload this biotch to cloudinary!")
         try {
-            const cloudinaryUploadEndpoint = 'https://api.cloudinary.com/v1_1/dlpvg1cvn/upload';
+            const cloudinaryUploadEndpoint = 'https://api.cloudinary.com/v1_1/dlpvg1cvn/video/upload';
             const response = await fetch(cloudinaryUploadEndpoint, {
                 method: "POST",
                 body: formData
