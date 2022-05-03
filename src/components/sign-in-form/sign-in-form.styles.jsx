@@ -22,7 +22,7 @@ export const StyledAuth = styled.div`
     border-radius: 3px;
     width: 100%;
     padding: 0.6rem 1.2rem;
-    background: ${(props) => props.theme.white};
+    background: ${(props) => props.theme.black};
     border: 1px solid ${(props) => props.theme.black};
     margin-bottom: 1.5rem;
     color: ${(props) => props.theme.primaryColor};

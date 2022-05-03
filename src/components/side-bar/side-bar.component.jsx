@@ -18,11 +18,30 @@ const SideBar = () => {
         <SidebarWrapper open={isSideBarOpen}>
             <NavLink
                 onClick={handleToggleSidebar}
-                exact
                 to="/"
                 className="active"
             >
-                <span>Home</span>
+                <div className="icon">
+                    <span><b>HOME</b></span>
+                </div>
+            </NavLink>
+            <NavLink
+                onClick={handleToggleSidebar}
+                to='/videos'
+                className="active"
+            >
+                <div className="icon">
+                    <span><b>MY VIDEOS</b></span>
+                </div>
+            </NavLink>
+            <NavLink
+                onClick={handleToggleSidebar}
+                to='/upload'
+                className="active"
+            >
+                <div className="icon">
+                    <span><b>UPLOAD A VIDEO</b></span>
+                </div>
             </NavLink>
         </SidebarWrapper>
     );

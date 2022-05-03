@@ -1,34 +1,18 @@
 import React, {useState} from 'react';
-import "react-dropzone-uploader/dist/styles.css";
+
+import axios from 'axios';
+
 import FormInput from "../form-input/form-input.component";
-
-
-const S3_BUCKET ='video-injest-bucket';
-const REGION ='us-west-2';
-
-
-// AWS.config.update({
-//     accessKeyId: 'YOUR_ACCESS_KEY_HERE',
-//     secretAccessKey: 'YOUR_SECRET_ACCESS_KEY_HERE'
-// })
-//
-// const myBucket = new AWS.S3({
-//     params: { Bucket: S3_BUCKET},
-//     region: REGION,
-// })
 
 const defaultFormFields = {
     title: '',
     date: '',
-    duration: '',
+    description: ''
 }
 
 const FileUpload = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const {title, date, duration} = formFields;
-    // const axios = require("axios").default;
-    //
-    // const API_ENDPOINT = "https://f2ud39ek4d.execute-api.us-west-2.amazonaws.com/default/getPresignedUrl";
 
     const resetFormFields = () => {
         setFormFields(defaultFormFields);
@@ -40,24 +24,24 @@ const FileUpload = () => {
     };
 
     const handleSubmit = async (files) => {
-        const f = files[0];
+        console.log("here goes nothin lets upload this biotch to cloudinary!")
+        const formData = new FormData();
+        for (const file in files) {
+            formData.append('file', file);
+        }
+        // formData.append(...formFields);
+        formData.append('upload_preset', 'test_upload');
+        console.log("here goes nothin lets upload this biotch to cloudinary!")
         try {
-            // const response = await axios({
-            //     method: "GET",
-            //     url: API_ENDPOINT,
-            //     headers: {
-            //         "Access-Control-Allow-Origin": "*"
-            //     }
-            // });
-            // console.log("response: ", response)
-            //
-            // const result = await fetch(response.data.uploadURL, {
-            //     method: "POST",
-            //     body: f["file"],
-            //
-            // });
-            // console.log('result: ', result);
-            resetFormFields();
+            const cloudinaryUploadEndpoint = 'https://api.cloudinary.com/v1_1/dlpvg1cvn/upload';
+            const response = await fetch(cloudinaryUploadEndpoint, {
+                method: "POST",
+                body: formData
+            });
+            const jsonResponse = await response.json();
+            console.log("SUCCESS!");
+            console.log(jsonResponse);
+            // resetFormFields();
         } catch (error) {
             console.log('Error occurred try again: ', error.text);
         }
@@ -74,7 +58,6 @@ const FileUpload = () => {
                 value={title}
             />
             <FormInput
-                // label='Date'
                 type='date'
                 required
                 onChange={handleFormChange}
@@ -82,14 +65,13 @@ const FileUpload = () => {
                 value={date}
             />
             <FormInput
-                // label='Duration'
                 type='file'
                 required
                 onChange={handleFormChange}
                 name='duration'
                 value={duration}
             />
-            <button onClick={handleSubmit}>UPLOAD VIDEO</button>
+            <button onClick={handleSubmit}>SUBMIT</button>
         </form>
     );
 };

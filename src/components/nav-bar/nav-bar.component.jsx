@@ -30,8 +30,6 @@ const NavBar = () => {
                 />
             </div>
             {isSideBarOpen && <SideBar />}
-            <NavLink to='/videos'><b>VIDEOS</b></NavLink>
-            <NavLink to='/upload'><b>UPLOAD</b></NavLink>
             <NavLink to='/login' onClick={signOutUser}>
                 <b>SIGN OUT</b>
             </NavLink>

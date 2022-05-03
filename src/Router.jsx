@@ -14,6 +14,7 @@ import Container from "./styles/container";
 
 // routes
 import Home from "./routes/home/home.component";
+import Upload from "./routes/upload/upload.component";
 
 const AppRouter = () => (
     <Router>
@@ -22,6 +23,7 @@ const AppRouter = () => (
         <Container>
             <Routes>
                 <Route path="/" element={<Home/>} />
+                <Route path="/upload" element={<Upload/>} />
             </Routes>
         </Container>
     </Router>
