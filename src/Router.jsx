@@ -15,6 +15,7 @@ import Container from "./styles/container";
 // routes
 import Home from "./routes/home/home.component";
 import Upload from "./routes/upload/upload.component";
+import Videos from "./routes/videos/videos.component";
 
 const AppRouter = () => (
     <Router>
@@ -23,6 +24,7 @@ const AppRouter = () => (
         <Container>
             <Routes>
                 <Route path="/" element={<Home/>} />
+                <Route path="/videos" element={<Videos />}/>
                 <Route path="/upload" element={<Upload/>} />
             </Routes>
         </Container>

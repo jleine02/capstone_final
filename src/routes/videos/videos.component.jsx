@@ -1,14 +1,28 @@
-import {Route, Routes} from "react-router-dom";
-import VideosPreview from "../videos-preview/videos-preview.component";
-import Video from "../video/video.component";
+import {AdvancedVideo} from '@cloudinary/react';
+import {Cloudinary} from "@cloudinary/url-gen";
+
+// Import any actions required for transformations.
+import {fill} from "@cloudinary/url-gen/actions/resize";
+import VideoGrid from "../../styles/video-grid";
+import Container from "../../styles/container";
+import {HomeContainer} from "../home/home.styles";
 
 const Videos = () => {
+    const cld = new Cloudinary({
+        cloud: {
+            cloudName: 'dlpvg1cvn'
+        }
+    });
+
+
     return (
-        <Routes>
-            <Route index element={<VideosPreview/>}/>
-            <Route path=':video' element={<Video/>}/>
-            <Route path='test' element={<Video/>}/>
-        </Routes>
+        <HomeContainer>
+            <VideoGrid>
+                {/*myVideos.map((video) => (*/}
+                {/*        <AdvancedVideo cldVid={video} controls/>*/}
+                {/*))}*/}
+            </VideoGrid>
+        </HomeContainer>
     );
 };
 
